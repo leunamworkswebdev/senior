@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin | Senior Master Carwash</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="admin.css">
+<script src="admin.js" defer></script>
+</head>
+<body data-page="bookings">
+
+<section id="login" hidden>
+  <div class="login-box">
+    <h1>Admin sign in</h1>
+    <p class="note">Senior Master Carwash. Staff only.</p>
+    <form id="login-form">
+      <div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" required><span class="error" id="login-error" role="alert"></span></div>
+      <button class="btn btn-primary btn-block" type="submit" id="login-btn">Sign in</button>
+    </form>
+  </div>
+</section>
+
+<div id="app" hidden>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Admin">
+      <a class="brand" href="admin.html">Senior Master Carwash Admin</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="admin.html" id="nav-bookings">Bookings <span class="count" id="nav-pending" hidden>0</span></a></li>
+        <li><a href="admin.html#earnings" id="nav-earnings">Earnings</a></li>
+        <li><a href="admin-calendar.html">Calendar</a></li>
+        <li><a href="/api/admin/export.csv">Export CSV</a></li>
+        <li><button class="link" type="button" id="logout">Log out</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container admin-main" id="main">
+    <p id="live" class="sr-only" role="status" aria-live="polite"></p>
+
+    <section id="panel-bookings" aria-labelledby="bk-title">
+      <h1 id="bk-title">Bookings</h1>
+      <div class="tiles" id="counts"></div>
+      <form class="toolbar" id="filters">
+        <div class="field"><label for="f-status">Show</label>
+          <select id="f-status"><option value="active">Open (pending and confirmed)</option><option value="pending">Pending</option><option value="confirmed">Confirmed</option><option value="completed">Completed</option><option value="cancelled">Cancelled</option><option value="all">All</option></select></div>
+        <div class="field"><label for="f-date">Date</label><input id="f-date" type="date"></div>
+        <div class="field"><label for="f-q">Search</label><input id="f-q" type="search" placeholder="Name, phone, reference, vehicle"></div>
+        <button class="btn btn-outline" type="button" id="f-clear">Clear filters</button>
+        <button class="btn btn-primary" type="button" id="f-refresh">Refresh</button>
+      </form>
+      <p class="updated" id="updated"></p>
+      <div class="bookings-list" id="rows" aria-live="polite"></div>
+    </section>
+
+    <section id="panel-earnings" aria-labelledby="er-title" hidden>
+      <h1 id="er-title">Earnings</h1>
+      <p class="note">Counted from completed bookings, using the final amount you enter, on the date of the service.</p>
+      <div class="tiles" id="er-tiles"></div>
+      <div class="toolbar">
+        <div class="seg" role="group" aria-label="Chart view"><button type="button" id="v-monthly" aria-pressed="true">Every month</button><button type="button" id="v-yearly" aria-pressed="false">Every year</button></div>
+        <div class="field" id="year-field"><label for="f-year">Year</label><select id="f-year"></select></div>
+      </div>
+      <div class="chart-box"><div id="chart" role="img" aria-label="Earnings chart"></div></div>
+      <div class="table-wrap" style="margin-top:var(--sp-2)">
+        <table id="er-table"><caption id="er-caption">Earnings</caption><thead><tr><th scope="col" id="er-col">Month</th><th scope="col" class="num">Completed jobs</th><th scope="col" class="num">Earnings</th></tr></thead><tbody></tbody><tfoot></tfoot></table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<dialog id="amt-dlg" aria-labelledby="amt-title">
+  <form id="amt-form" method="dialog">
+    <h2 id="amt-title">Final amount</h2>
+    <p class="note small" id="amt-hint"></p>
+    <div class="field"><label for="amt-input">Amount paid (₱)</label><input id="amt-input" type="number" min="0" max="1000000" step="0.01" inputmode="decimal" required><span class="error" id="amt-error" role="alert"></span></div>
+    <div><button class="btn btn-primary" type="submit" id="amt-save">Save</button> <button class="btn btn-outline" type="button" id="amt-cancel">Cancel</button></div>
+  </form>
+</dialog>
+</body>
+</html>

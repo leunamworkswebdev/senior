@@ -1,0 +1,73 @@
+/* Senior Master Carwash - admin styles (loads after style.css and reuses its colors) */
+.admin-main{padding:var(--sp-3) 0 var(--sp-5)}
+.admin-main h1{max-width:none;font-size:clamp(1.6rem,4vw,2.2rem)}
+.nav-menu a[aria-current="page"]{color:var(--gold);border-bottom:2px solid var(--gold)}
+.nav-menu button.link{background:none;border:0;color:var(--white);font:inherit;font-weight:500;cursor:pointer;padding:0}
+.nav-menu button.link:hover{color:var(--gold)}
+.login-box{max-width:420px;margin:var(--sp-5) auto;background:var(--charcoal);border:2px solid var(--gold);border-radius:var(--radius);padding:var(--sp-3)}
+.login-box form{display:grid;gap:var(--sp-2)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--sp-2);margin:var(--sp-2) 0}
+.tile{background:var(--charcoal-2);border:1px solid #3a3a42;border-left:4px solid var(--red);border-radius:var(--radius);padding:var(--sp-2)}
+.tile.gold{border-left-color:var(--gold)}
+.tile .label{margin:0;color:var(--muted);font-size:.85rem}
+.tile .value{margin:0;font-size:1.6rem;font-weight:800}
+.toolbar{display:flex;flex-wrap:wrap;gap:var(--sp-2);align-items:end;margin:var(--sp-2) 0}
+.toolbar .field{min-width:150px;flex:1}
+.toolbar .btn{padding:.7rem 1.1rem}
+.updated{color:var(--muted);font-size:.85rem;margin:0 0 var(--sp-2)}
+.booking-card.pending{border-left-color:var(--gold)}
+.booking-card.confirmed{border-left-color:#7be29a}
+.booking-card.completed{border-left-color:#8ec5ff}
+.booking-card dd a{color:var(--gold)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+dialog{background:var(--charcoal);color:var(--white);border:2px solid var(--gold);border-radius:var(--radius);padding:var(--sp-3);max-width:420px;width:92%}
+dialog::backdrop{background:rgba(0,0,0,.75)}
+dialog form{display:grid;gap:var(--sp-2)}
+.seg{display:inline-flex;border:2px solid var(--gold);border-radius:var(--radius-sm);overflow:hidden}
+.seg button{font:inherit;font-weight:600;background:transparent;color:var(--gold);border:0;padding:.55rem 1rem;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--gold);color:#000}
+.chart-box{background:var(--charcoal-2);border:1px solid #3a3a42;border-radius:var(--radius);padding:var(--sp-2);overflow-x:auto}
+.chart-box svg{display:block;width:100%;min-width:560px;height:auto}
+.chart-box .bar{fill:var(--red)}
+.chart-box .bar.now{fill:var(--gold)}
+.chart-box .bar:hover,.chart-box .bar:focus{fill:#ff5a63}
+.chart-box .gl{stroke:#3a3a42;stroke-width:1}
+.chart-box text{fill:var(--muted);font-size:12px;font-family:var(--font)}
+.chart-box .val{fill:var(--white);font-weight:700}
+td.num,th.num{text-align:right}
+tfoot th,tfoot td{font-weight:800;border-top:2px solid var(--gold);border-bottom:0}
+/* Calendar */
+.cal-head{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-2);margin:var(--sp-2) 0}
+.cal-head h2{margin:0;flex:1;min-width:160px;font-size:1.4rem}
+.cal-head .btn{padding:.5rem 1rem}
+.cal-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:var(--sp-3);align-items:start}
+.cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.cal-dow{text-align:center;color:var(--muted);font-size:.85rem;padding:.3rem 0}
+.cal-day{font:inherit;color:var(--white);background:var(--charcoal-2);border:2px solid #3a3a42;border-radius:var(--radius-sm);min-height:78px;padding:.35rem;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:2px;overflow:hidden}
+.cal-day:hover{border-color:var(--gold)}
+.cal-day.blank{visibility:hidden;border:0;cursor:default}
+.cal-day.today .n{background:var(--red);border-radius:99px;padding:0 .45em}
+.cal-day.past{opacity:.7}
+.cal-day[aria-pressed="true"]{border-color:var(--gold);background:var(--charcoal)}
+.cal-day .n{font-weight:700;align-self:flex-start}
+.cal-day small{font-size:.72rem;color:var(--muted);line-height:1.2}
+.cal-day .full-tag{color:#ff8a8a;font-weight:700}
+.cal-day .pend{color:var(--gold)}
+.day-panel{background:var(--charcoal-2);border:1px solid #3a3a42;border-radius:var(--radius);padding:var(--sp-2)}
+.day-panel h2{font-size:1.25rem;margin:0 0 .3rem}
+.slot-row{border-top:1px solid #3a3a42;padding:.5rem 0}
+.slot-row.hidden{display:none}
+.slot-top{display:grid;grid-template-columns:86px 1fr auto;gap:.6rem;align-items:center}
+.meter{height:10px;background:#111;border-radius:99px;overflow:hidden}
+.meter i{display:block;height:100%;background:#7be29a}
+.meter i.few{background:var(--gold)}
+.meter i.full{background:#ff6b6b}
+.slot-state{font-size:.85rem;font-weight:600;white-space:nowrap}
+.slot-state.full{color:#ff8a8a}
+.slot-state.few{color:var(--gold)}
+.slot-state.past{color:var(--muted)}
+.slot-row ul{list-style:none;margin:.4rem 0 0 86px;padding:0;font-size:.9rem}
+.slot-row li{padding:.15rem 0;overflow-wrap:anywhere}
+.slot-row.past{opacity:.65}
+@media (max-width:900px){.cal-layout{grid-template-columns:1fr}}
+@media (max-width:520px){.cal-day{min-height:62px;padding:.2rem}.cal-day small{font-size:.65rem}.slot-row ul{margin-left:0}}

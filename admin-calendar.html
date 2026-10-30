@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Calendar | Senior Master Carwash Admin</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="admin.css">
+<script src="admin.js" defer></script>
+</head>
+<body data-page="calendar">
+
+<section id="login" hidden>
+  <div class="login-box">
+    <h1>Admin sign in</h1>
+    <p class="note">Senior Master Carwash. Staff only.</p>
+    <form id="login-form">
+      <div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" required><span class="error" id="login-error" role="alert"></span></div>
+      <button class="btn btn-primary btn-block" type="submit" id="login-btn">Sign in</button>
+    </form>
+  </div>
+</section>
+
+<div id="app" hidden>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Admin">
+      <a class="brand" href="admin.html">Senior Master Carwash Admin</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="admin.html" id="nav-bookings">Bookings <span class="count" id="nav-pending" hidden>0</span></a></li>
+        <li><a href="admin.html#earnings">Earnings</a></li>
+        <li><a href="admin-calendar.html" aria-current="page">Calendar</a></li>
+        <li><a href="/api/admin/export.csv">Export CSV</a></li>
+        <li><button class="link" type="button" id="logout">Log out</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container admin-main" id="main">
+    <h1>Calendar</h1>
+    <p class="note">Open 24 hours. Each hour takes a maximum of <strong id="cal-max">10</strong> cars. Select a day to see every hour.</p>
+    <div class="cal-head">
+      <h2 id="cal-title" aria-live="polite"></h2>
+      <button class="btn btn-outline" type="button" id="cal-prev" aria-label="Previous month">Previous</button>
+      <button class="btn btn-outline" type="button" id="cal-today">Today</button>
+      <button class="btn btn-outline" type="button" id="cal-next" aria-label="Next month">Next</button>
+    </div>
+    <p id="live" class="sr-only" role="status" aria-live="polite"></p>
+    <div class="cal-layout">
+      <div>
+        <div class="cal-grid" id="cal-dow" aria-hidden="true"></div>
+        <div class="cal-grid" id="cal-grid" role="group" aria-label="Days of the month"></div>
+        <p class="note small" id="cal-msg" role="status"></p>
+      </div>
+      <section class="day-panel" aria-labelledby="day-title">
+        <h2 id="day-title">Select a day</h2>
+        <p class="note small" id="day-sub">Pick a date on the calendar to see the 24 hourly slots.</p>
+        <div class="toolbar" style="margin:.5rem 0">
+          <label><input type="checkbox" id="hide-empty" style="width:auto"> Hide hours with no cars</label>
+          <a class="btn btn-outline" id="day-open" href="admin.html" hidden>Open in Bookings</a>
+        </div>
+        <div id="slots"></div>
+      </section>
+    </div>
+  </main>
+</div>
+</body>
+</html>
